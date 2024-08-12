@@ -31,6 +31,12 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody User user){
+        User user1 = userServicelmpl.getUserById(user.getId()).get();
+        return new ResponseEntity<>(user1, HttpStatus.OK);
+    }
+
     @GetMapping("/")
     public ResponseEntity<List<User>> getAllUser(){
         List<User> userlst = userServicelmpl.getAllUser();
